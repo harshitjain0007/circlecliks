@@ -5,6 +5,7 @@ const allbutton2 = document.getElementsByClassName("button");
 
 
 let circlepicks = [];
+let redopicks = []
 
 function getRandomColor() {
   const rcolor = "0123456789abcdef";
@@ -26,6 +27,8 @@ function createcircle(event){
     document.body.appendChild(circlepick);
     circlepicks.push(circlepick)
 
+    redopicks = [];
+
  if (circlepicks.length === 1){
        allbutton2.display = "block";
     }
@@ -36,11 +39,13 @@ function undo (){
  const lastcircle = circlepicks.pop();
  if (lastcircle){
       lastcircle.remove()
+      redopicks.push(lastcircle);
  }
 }
 function reset (){
     circlepicks.forEach(circlepick => circlepick.remove());
     circlepick = [];
+    redopicks = [];
     allbutton2.display = "none";
 
 }
